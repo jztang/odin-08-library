@@ -14,5 +14,6 @@
         "sourceType": "module"
     },
     "rules": {
+        "no-restricted-syntax": 0
     }
 }
