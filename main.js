@@ -47,10 +47,38 @@ function generateCard(book) {
 
 function displayLibrary() {
   const library = document.querySelector(".library");
+  const newChildren = [];
   for (const book of myLibrary) {
-    library.appendChild(generateCard(book));
+    newChildren.push(generateCard(book));
   }
+  library.replaceChildren(...newChildren);
 }
+
+// New book modal
+const modalBackground = document.querySelector(".modal-background");
+document.querySelector(".new-book-btn").addEventListener("click", () => {
+  modalBackground.style.display = "block";
+});
+
+document.querySelector(".close").addEventListener("click", () => {
+  modalBackground.style.display = "none";
+});
+
+window.addEventListener("click", (event) => {
+  if (event.target === modalBackground) modalBackground.style.display = "none";
+});
+
+document.querySelector(".modal").addEventListener("submit", (event) => {
+  event.preventDefault();
+  const author = event.currentTarget.author.value;
+  const title = event.currentTarget.title.value;
+  const pages = event.currentTarget.pages.value;
+  const read = event.currentTarget.status.value === "Read";
+  addBookToLibrary(author, title, pages, read);
+  displayLibrary();
+  document.querySelector(".modal").reset();
+  modalBackground.style.display = "none";
+});
 
 // Initial books
 addBookToLibrary("J. R. R. Tolkien", "The Fellowship of the Ring", 423, true);

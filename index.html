@@ -11,5 +11,34 @@
   </head>
   <body>
     <div class="library"></div>
+    <button class="new-book-btn">New book</button>
+    <div class="modal-background">
+      <form action="" class="modal">
+        <span class="close">&times;</span>
+        <h2>New book</h2>
+        <div class="form-row">
+          <label for="title">Title</label>
+          <input id="title" name="title" type="text" required/>
+        </div>
+        <div class="form-row">
+          <label for="author">Author</label>
+          <input id="author" name="author" type="text" required/>
+        </div>
+        <div class="form-row">
+          <label for="pages">Pages</label>
+          <input id="pages" name="pages" type="number" min="1" required/>
+        </div>
+        <fieldset class="legacy-form-row">
+          <legend>Status</legend>
+          <input id="status-1" name="status" type="radio" value="Read" required/>
+          <label for="status-1" class="radio-label">Read</label>
+          <input id="status-2" name="status" type="radio" value="Unread" />
+          <label for="status-2" class="radio-label">Unread</label>
+        </fieldset>
+        <div class="form-row">
+          <button class="add-book-btn">Add book</button>
+        </div>
+      </form>
+    </div>
   </body>
 </html>
