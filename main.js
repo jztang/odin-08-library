@@ -41,6 +41,16 @@ function generateCard(book) {
   } else {
     read.textContent = "Unread";
   }
+  // Toggle read status
+  read.addEventListener("click", (e) => {
+    if (book.read) {
+      e.target.textContent = "Unread";
+    } else {
+      e.target.textContent = "Read";
+    }
+    const curBook = myLibrary.find((b) => b.author === book.author && b.title === book.title);
+    curBook.read = !curBook.read;
+  });
   bottomRow.appendChild(read);
 
   const delDiv = document.createElement("div");
